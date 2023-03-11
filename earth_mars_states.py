@@ -13,7 +13,8 @@ def earth_mars_positions(jd0, jd1):
         earth_states.append(kiam.planet_state(jd0 + dt * i, 'Sun', 'Earth'))
         mars_states.append(kiam.planet_state(jd0 + dt * i, 'Sun', 'Mars'))
 
-    earth_states = np.array(earth_states)
-    mars_states = np.array(mars_states[-150:])
+
+    earth_states = np.array(earth_states, dtype='float32')
+    mars_states = np.array(mars_states[-150:], dtype='float32')
 
     return earth_states, mars_states

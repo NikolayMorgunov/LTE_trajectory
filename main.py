@@ -1,6 +1,6 @@
 import numpy as np
 import kiam
-from draw_trajectories import draw_trajectories
+from draw_plots import draw_plots
 from earth_mars_states import earth_mars_positions
 from optim import optim
 from test import test
@@ -23,8 +23,9 @@ N_int = 300
 earth_states, mars_states = earth_mars_positions(jd0, jd1)
 
 F, craft_states = optim(np.copy(earth_states[0]), np.copy(mars_states[-1]), m0, Ig, jd0, jd1)
+# F, craft_states = test(jd0, jd1, m0, Ig, np.copy(earth_states[0]))
+
 print(F)
-# craft_states = test(jd0, jd1, m0, Ig, np.copy(earth_states[0]))
 
 earth_states = np.transpose(earth_states)
 mars_states = np.transpose(mars_states)
@@ -32,7 +33,7 @@ mars_states = np.transpose(mars_states)
 craft_states = np.transpose(craft_states)
 
 
-draw_trajectories(earth_states, mars_states, craft_states)
+draw_plots(earth_states, mars_states, craft_states, F)
 
 
 print(craft_states[6])
